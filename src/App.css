@@ -1,0 +1,223 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1e202a;
+  --card-bg: #f0f2fa;
+  --card-hover: #e1e3f0;
+  --blue: #178ff5;
+  --green: #1db489;
+  --red: #dc414c;
+  --toggle-bg: #aeb3cb;
+  --toggle-bg-hover: linear-gradient(to right, #378fe6, #3eda82);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0;
+  padding: 20px;
+}
+
+.dark-mode {
+  --bg-color: #1e202a;
+  --text-color: #ffffff;
+  --card-bg: #252a41;
+  --card-hover: #333a56;
+  --toggle-bg: linear-gradient(to right, #378fe6, #3eda82);
+}
+
+body.light {
+  background-color: white;
+  color: black;
+}
+
+body.dark {
+  background-color: #1e1f26;
+  color: white;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header p{
+  margin-top: -20px;
+  margin-bottom: 30px;
+}
+.theme-switcher {
+  display: flex;
+  align-items: center;
+}
+.dashboard{
+  display: flex;
+  flex-direction:column ;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.dashboard, .overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+.dashboard-card{
+  padding: 20px;
+  border-radius: 8px;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
+  0 6px 20px rgba(0, 0, 0, 0.1);
+}
+.dashboard-card h2{
+  display: inline-block;
+  margin: 10px;
+}
+.dashboard-card p{
+  display: block;
+  
+}
+body.light .dashboard-card:hover {
+  background-color: #f0f0f0; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 
+              0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+
+body.dark .dashboard-card:hover {
+  background-color: #444; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 
+              0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.overview-card {
+  padding: 20px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  text-align: center;
+  line-height: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
+              0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.light .overview-card:hover {
+  background-color: #e0e0e0; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 
+              0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .overview-card:hover {
+  background-color: #555; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 
+              0 12px 24px rgba(0, 0, 0, 0.2);
+}
+.overview-card .left {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+}
+
+.overview-card .right {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+}
+
+.overview-card img {
+  margin-bottom: 5px; 
+  margin-left: 20px;
+}
+
+.overview-card p {
+  margin: 0;
+  text-align: center;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+.dashboard-card.facebook { border-top: 5px solid #1877f2; }
+.dashboard-card.twitter { border-top: 5px solid #1da1f2; }
+.dashboard-card.instagram { border-top: 5px solid #e4405f; }
+.dashboard-card.youtube { border-top: 5px solid #ff0000; }
+
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.dark-mode-toggle span {
+  margin-right: 10px;
+}
+
+#darkModeToggle {
+  opacity: 0;
+  position: absolute;
+}
+
+#darkModeToggle + label {
+  width: 50px;
+  height: 24px;
+  background: var(--toggle-bg);
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+#darkModeToggle + label::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+#darkModeToggle:checked + label {
+  background: var(--toggle-bg-hover);
+}
+
+#darkModeToggle:checked + label::after {
+  left: calc(100% - 22px);
+}
+
+#darkModeToggle:focus + label {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+#darkModeToggle:focus:checked + label {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+.header{
+  display: flex;
+  flex-direction: column;
+}
